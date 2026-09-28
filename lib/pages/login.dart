@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/users.dart';
+import '../root.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,6 +23,10 @@ if (users.any((user) => user.email == email && user.password == password)) {
       setState(() { isLogedin = true; });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Login Berhasil"), backgroundColor: Colors.green),
+      );
+       Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Root()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
